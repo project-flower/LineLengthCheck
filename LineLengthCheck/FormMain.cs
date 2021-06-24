@@ -11,6 +11,7 @@ namespace LineLengthCheck
     {
         #region Private Fields
 
+        private CheckResult[] checkResults = new CheckResult[0];
         private readonly Font monospacedFont;
 
         #endregion
@@ -137,6 +138,8 @@ namespace LineLengthCheck
             }
 
             SetListViewItem(checkResults);
+            this.checkResults = checkResults;
+            buttonOutputReport.Enabled = ((checkResults != null) && (checkResults.Length > 0));
             string message;
             MessageBoxIcon icon;
             int resultsLength = checkResults.Length;
@@ -153,6 +156,28 @@ namespace LineLengthCheck
             }
 
             ShowMessage(message, MessageBoxButtons.OK, icon);
+        }
+
+        private void buttonOutputReport_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            string fileName = saveFileDialog.FileName;
+
+            try
+            {
+                FileManager.OutputReport(checkResults, fileName);
+            }
+            catch (Exception exception)
+            {
+                ShowErrorMessage(exception.Message);
+                return;
+            }
+
+            ShowMessage(string.Format("Reports has saved to {0}{1}.", Environment.NewLine, fileName), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void comboBoxDirectory_DragDrop(object sender, DragEventArgs e)

@@ -42,6 +42,8 @@ namespace LineLengthCheck
             this.columnHeaderLine = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderContents = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonBegin = new System.Windows.Forms.Button();
+            this.buttonOutputReport = new System.Windows.Forms.Button();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLimit)).BeginInit();
             this.SuspendLayout();
             // 
@@ -178,7 +180,7 @@ namespace LineLengthCheck
             // buttonBegin
             // 
             this.buttonBegin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonBegin.Location = new System.Drawing.Point(713, 415);
+            this.buttonBegin.Location = new System.Drawing.Point(632, 415);
             this.buttonBegin.Name = "buttonBegin";
             this.buttonBegin.Size = new System.Drawing.Size(75, 23);
             this.buttonBegin.TabIndex = 9;
@@ -186,11 +188,28 @@ namespace LineLengthCheck
             this.buttonBegin.UseVisualStyleBackColor = true;
             this.buttonBegin.Click += new System.EventHandler(this.buttonBegin_Click);
             // 
+            // buttonOutputReport
+            // 
+            this.buttonOutputReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonOutputReport.Enabled = false;
+            this.buttonOutputReport.Location = new System.Drawing.Point(713, 415);
+            this.buttonOutputReport.Name = "buttonOutputReport";
+            this.buttonOutputReport.Size = new System.Drawing.Size(75, 23);
+            this.buttonOutputReport.TabIndex = 10;
+            this.buttonOutputReport.Text = "&Report";
+            this.buttonOutputReport.UseVisualStyleBackColor = true;
+            this.buttonOutputReport.Click += new System.EventHandler(this.buttonOutputReport_Click);
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.Filter = "Text File|*.txt|All Files|*.*";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonOutputReport);
             this.Controls.Add(this.buttonBegin);
             this.Controls.Add(this.listViewResults);
             this.Controls.Add(this.checkBoxCountInAscii);
@@ -224,6 +243,8 @@ namespace LineLengthCheck
         private System.Windows.Forms.ColumnHeader columnHeaderLine;
         private System.Windows.Forms.ColumnHeader columnHeaderContents;
         private System.Windows.Forms.Button buttonBegin;
+        private System.Windows.Forms.Button buttonOutputReport;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }
 
