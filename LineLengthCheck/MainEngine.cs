@@ -10,7 +10,7 @@ namespace LineLengthCheck
         #region Private Fields
 
         private static readonly Encoding defaultEncoding = Encoding.Default;
-        private static readonly string[] lineSplitter = new string[] { Environment.NewLine };
+        private static readonly string[] lineSplitter = new string[] { "\n", "\r" };
         private static readonly byte[] utf8Bom = new byte[] { 0xEF, 0xBB, 0xBF };
 
         #endregion
@@ -192,7 +192,7 @@ namespace LineLengthCheck
                 throw;
             }
 
-            return contents.Split(lineSplitter, StringSplitOptions.None);
+            return contents.Replace("\r\n", "\n").Split(lineSplitter, StringSplitOptions.None);
         }
 
         #endregion
